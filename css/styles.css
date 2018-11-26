@@ -1,0 +1,110 @@
+div {
+  background-color: black;
+  justify-content: center;
+  color: white;
+  line-height: 2em;
+}
+
+body {
+  margin: 0;
+  font-family: Avenir, Helveltica, Arial, san-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #fff;
+}
+/* use of * wildcard selector known to be slow so only for demo!  */
+body > * {
+  padding: 1em;
+  box-sizing: border-box;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  /*grid-gap: 6px; */
+  grid-template-areas:
+    "header  header"
+    "menu    menu"
+    "intro   intro"
+    "content content"
+    "footer  footer";
+
+}
+header {
+  grid-area: header;
+  background: #404EF5;
+}
+nav {
+  grid-area: menu;
+  background: #74B1F1;
+  flex-direction: column;
+  justify-content: flex-start;
+  display: flex;
+}
+nav a{
+  display: flex;
+  color: white;
+  align-items: center;
+  padding: 0.2em;
+  text-decoration: none;
+}
+nav a:hover{
+  display: flex;
+  color: #717A82;
+  background: #3095EE;
+}
+
+.intro {
+  grid-area: intro;
+  background-color: #9393C8;
+}
+
+main {
+  grid-area: content;
+  /* increasing the height of one element increases all row heights */
+  /*height: 25vh;*/
+  background: #BEBEE5;
+}
+footer {
+  grid-area: footer;
+  background: grey;
+  /* needs to take up the full grid row so this leaves a gap! */
+  /* height: 3em; */
+}
+
+
+
+@media screen and (min-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-template-rows: 1fr 1fr 1fr 1fr;*/
+    /*or set the rows to 'view height (vh)'*/
+    grid-template-rows: 10vh 10vh 70vh 10vh;
+    grid-template-areas:
+      "header  header  header"
+      "menu intro   intro"
+      "menu content content"
+      "footer  footer  footer";
+  }
+
+}
+
+/* LARGER SCREENS */
+@media screen and (min-width: 1500px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    /*grid-template-rows: 1fr 1fr 1fr 1fr;*/
+    /*or set the rows to 'view height (vh)'*/
+    grid-template-rows: 10vh 10vh 70vh 10vh;
+    grid-template-areas:
+      "header  header  header"
+      " menu menu menu"
+      "intro content content"
+      "intro content content "
+      "footer  footer  footer";
+  }
+  nav {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
