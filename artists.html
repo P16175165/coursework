@@ -7,8 +7,14 @@
   <link rel="stylesheet" href="css/artists.css">
 </head>
 <body class="grid">
-  <header>Music</header>
-  <div class="intro"> Artists </div>
+  <header>Artists</header>
+  <div class="intro">
+  <form id="searchForm">
+      <label for="wikiQuery">Search Wikipedia for: </label>
+      <input id="wikiQuery" type="text" placeholder="">
+      <input type="submit">
+    </form>
+  </div>
 
   <nav>
               <a href="../website/index.html"> Home<a/>
@@ -16,11 +22,15 @@
               <a href="../website/instruments.html"> Instruments </a>
               <a href="../website/concerts.html"> Concerts</a>
   </nav>
-  <main>content</main>
+  <main>
+    <br>
+      <ul id="demo"></ul>
+    </br>
+  </main>
   <footer>footer</footer>
 
 
 
-  <script src="js/scripts.js"></script>
+    <script src="javascript/query.js"></script>
 </body>
 </html>

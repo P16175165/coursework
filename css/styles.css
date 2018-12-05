@@ -12,7 +12,7 @@ body {
   font-size: 1.5rem;
   color: #fff;
 }
-/* use of * wildcard selector known to be slow so only for demo!  */
+
 body > * {
   padding: 1em;
   box-sizing: border-box;
@@ -20,16 +20,48 @@ body > * {
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(5, 1fr);
-  /*grid-gap: 6px; */
   grid-template-areas:
     "header  header"
     "menu    menu"
     "intro   intro"
     "content content"
     "footer  footer";
-
 }
+ul {
+  list-style-type: none;
+  display: table;
+  width: 90%;
+  border-spacing: 0 10px;
+}
+
+li {
+  display: table-row;
+}
+
+li strong, li .txt, li .langs {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+li .langs {
+  display: none;
+}
+
+img {
+  display: none;
+  padding-right: 10px;
+}
+
+li .txt {
+  width: 60%;
+  padding-right: 10px;
+}
+
+li:nth-child(even) {
+  background: #eee;
+}
+
+
 header {
   grid-area: header;
   background: #404EF5;
@@ -61,15 +93,12 @@ nav a:hover{
 
 main {
   grid-area: content;
-  /* increasing the height of one element increases all row heights */
-  /*height: 25vh;*/
   background: #BEBEE5;
+  font-size: 0.6em;
 }
 footer {
   grid-area: footer;
   background: grey;
-  /* needs to take up the full grid row so this leaves a gap! */
-  /* height: 3em; */
 }
 
 
@@ -86,13 +115,45 @@ footer {
       "menu content content"
       "footer  footer  footer";
   }
+  ul {
+    list-style-type: none;
+    display: table;
+    width: 90%;
+    border-spacing: 0 10px;
+  }
+
+  li {
+    display: table-row;
+  }
+
+  li strong, li .txt, li .langs {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  li .langs {
+    display: none;
+  }
+
+  img {
+    display: table-cell;
+    padding-right: 10px;
+  }
+
+  li .txt {
+    width: 60%;
+    padding-right: 10px;
+  }
+
+  li:nth-child(even) {
+    background: #eee;
+  }
 
 }
 
 /* LARGER SCREENS */
 @media screen and (min-width: 1500px) {
   .grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 0.4fr 1fr 1fr;
     /*grid-template-rows: 1fr 1fr 1fr 1fr;*/
     /*or set the rows to 'view height (vh)'*/
     grid-template-rows: 10vh 10vh 70vh 10vh;
@@ -107,4 +168,8 @@ footer {
     flex-direction: row;
     justify-content: space-around;
   }
+  li .langs {
+    display: table-cell;
+  }
+
 }
